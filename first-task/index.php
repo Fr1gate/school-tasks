@@ -12,7 +12,7 @@
 
 
 
-//      Находимся ли мы внутри тега? Если да, то режем
+//      Находимся ли мы внутри тега? Если да, то режем его
 function trimUnfinishedTag($str) 
 {
     $lastLeftBracketPos = 0;
@@ -69,30 +69,8 @@ function addLink($str, $link)
 
 $articleLink = "./article.html";
 
-//    Получаем все что находится внутри нужного тега. Эта функция нужна, так как метода innerHtml нет в библиотеке DOM.
-// function getInnerHtml($node)
-// {
-//     $innerHTML = '';
-//     $children = $node->childNodes;
-//     foreach ($children as $child) {
-//         $innerHTML .= $child->ownerDocument->saveHTML( $child ); //используем именно метод saveHTML, потому что нам нужно сохранить теги
-//     }
-
-//     return $innerHTML;
-// }
-// $document = new DOMDocument();
-// (!$document->loadHTMLFile($articleLink)) {   //  ругается на теги html5 <article> <header> <footer>
-//$articleText = getInnerHtml($document->getElementById("article"));
-//  невнимательно прочитал условие и усложнил себе задачу, парся текст статьи из элемента. Закомментировал код, жалко удалять
-
-
-// В данном примере 200 символ находится внутри тега ссылки. И между последними тремя словами есть закрывающий тег
-$articleText = "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<b> Quisque tincidunt elit non vehicula imperdiet.</b> <i>Ut urna urna, pretium sed <b>tincidunt sed, auctor eget ex.</b> Donec eleifend, <a href=\"#\"> orci gravida placerat </a> tristique, mi ante placerat lorem, vitae aliquam magna magna nec mauris. Nam vel dictum ante. Cras porta nunc vel mi
-porttitor tincidunt. Maecenas pretium metus id bibendum molestie. Phasellus molestie enim ut gravida porttitor.
-Suspendisse consequat facilisis aliquet.</i> Maecenas tristique, diam ut mollis vulputate, eros nisl ullamcorper
-neque, ac volutpat nibh enim sed orci. Vivamus in consectetur arcu. Lorem ipsum dolor sit amet, consectetur
-adipiscing elit. Suspendisse laoreet metus mi, eu tempus diam convallis ut. Nam fermentum pellentesque justo
-eget tincidunt.</p>";
+// В данном примере 200й символ находится внутри тега ссылки. И между последними тремя словами есть закрывающий тег
+$articleText = "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<b> Quisque tincidunt elit non vehicula imperdiet.</b> <i>Ut urna urna, pretium sed <b>tincidunt sed, auctor eget ex.</b> Donec eleifend, <a href=\"#\"> orci gravida placerat </a> tristique, mi ante placerat lorem, vitae aliquam magna magna nec mauris. Nam vel dictum ante. Cras porta nunc vel miporttitor tincidunt. Maecenas pretium metus id bibendum molestie. Phasellus molestie enim ut gravida porttitor.Suspendisse consequat facilisis aliquet.</i> Maecenas tristique, diam ut mollis vulputate, eros nisl ullamcorperneque, ac volutpat nibh enim sed orci. Vivamus in consectetur arcu. Lorem ipsum dolor sit amet, consecteturadipiscing elit. Suspendisse laoreet metus mi, eu tempus diam convallis ut. Nam fermentum pellentesque justoeget tincidunt.</p>";
 
 $articlePreview = substr($articleText, 0, 199); // отрезали 200 символов
 $articlePreview = addLink($articlePreview, "article.html");
@@ -102,6 +80,3 @@ $articlePreview = tidy_repair_string($articlePreview, array(
 ));
 
 echo $articlePreview;
-
-
-

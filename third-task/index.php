@@ -1,3 +1,22 @@
+<?php
+function solve() {
+    if (!isset($_GET["N"]) || !isset($_GET["M"])) {
+        return;
+    }
+
+    $n = $_GET["N"];            // всего чисел
+    $k = (string) $_GET["K"];   // нужное число
+    $pos = 1;
+
+    for ($i = 1; $i <= $n; $i++) {
+        if (strcmp((string)$i , $k) < 0) {
+            $pos++;
+        }
+    }
+
+    return $pos;    
+}
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -21,6 +40,7 @@
             <label for="M">Нужное число (K):<br><input type="number" name="K" min="0" required></label><br>
             <input type="submit" value="Решить">
         </form>
+        <h3><?=solve()?></h3>
     </div>
 </body>
 </html>
